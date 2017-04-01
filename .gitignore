@@ -15,6 +15,7 @@ $RECYCLE.BIN/
 #Compiled Unity Stuff
 obj
 Library
+Temp
 
 
 # Windows Installer files
