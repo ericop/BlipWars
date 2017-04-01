@@ -22,23 +22,31 @@ public class AiGenZoneController : MonoBehaviour
 
     public void AddAiWorker()
     {
-        var workerClone = Instantiate(blipShell,
-            new Vector2(transform.position.x,
-            transform.position.y), transform.rotation) as GameObject;
-        var blip = workerClone.GetComponent<Blip>();
-        blip.Init(true, true);
-        workerClone.GetComponent<SpriteRenderer>().material.color = blip.color;
-        workerClone.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * -1, speed * -0.5f);
+        var energyController = GameObject.FindWithTag("EnergyAmountText").GetComponent<EnergyController>();
+        if (energyController.aiEnergy >= 25)
+        {
+            var workerClone = Instantiate(blipShell,
+                new Vector2(transform.position.x,
+                transform.position.y), transform.rotation) as GameObject;
+            var blip = workerClone.GetComponent<Blip>();
+            blip.Init(true, true);
+            workerClone.GetComponent<SpriteRenderer>().material.color = blip.color;
+            workerClone.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * -1, speed * -0.5f);
+        }
     }
 
     public void AddAiAttacker()
     {
-        var workerClone = Instantiate(blipShell,
+        var energyController = GameObject.FindWithTag("EnergyAmountText").GetComponent<EnergyController>();
+        if (energyController.aiEnergy >= 25)
+        {
+            var workerClone = Instantiate(blipShell,
             new Vector2(transform.position.x,
             transform.position.y), transform.rotation) as GameObject;
-        var blip = workerClone.GetComponent<Blip>();
-        blip.Init(false, false);
-        workerClone.GetComponent<SpriteRenderer>().material.color = blip.color;
-        workerClone.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * -1, speed * -0.5f);
+            var blip = workerClone.GetComponent<Blip>();
+            blip.Init(false, true);
+            workerClone.GetComponent<SpriteRenderer>().material.color = blip.color;
+            workerClone.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * -1, speed * -0.5f);
+        }
     }
 }
