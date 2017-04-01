@@ -5,21 +5,25 @@ using UnityEngine.UI;
 
 public class EnergyController : MonoBehaviour
 {
+    public GameObject blipShell;
+    public int speed;
     public int playerEnergy;
     public int aiEnergy;
     public int energyPerReturn;
     public int energyPerBuy;
+
     void Start()
     {
 
     }
 
     void Update()
-    {sni
+    {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
+
     }
 
     public void SubtractEnergy()
