@@ -31,7 +31,8 @@ public class Blip : MonoBehaviour
         if (ownerIsAi)
         {
             energyController.SubtractAiEnergy();
-        } else
+        }
+        else
         {
             energyController.SubtractEnergy();
         }
@@ -42,7 +43,16 @@ public class Blip : MonoBehaviour
     void Start()
     {
         //ignore colision with team mate blips
-        //Physics2D.IgnoreCollision(character.GetComponent<Collider2D>(), opponentFrog.GetComponent<Collider2D>());
+        var blipArray = GameObject.FindGameObjectsWithTag("BlipTranspThreePointedStarPrefab");
+
+        foreach (var otherBlip in blipArray)
+        {
+            if (otherBlip.gameObject.GetComponent<Blip>() != null &&
+            otherBlip.gameObject.GetComponent<Blip>().ownerIsAi == this.ownerIsAi)
+            {
+                Physics2D.IgnoreCollision(GetComponent<Collider2D>(), otherBlip.GetComponent<Collider2D>());
+            }
+        }
     }
 
     void Update()
@@ -55,21 +65,52 @@ public class Blip : MonoBehaviour
         {
             transform.localScale = Vector2.one / 1.25f;
         }
-    }
 
-    private void OnCollisionEnter2D(Collider2D col)
-    {
-        Debug.LogWarning("2d col" + col.ToString() + col.GetComponent<Blip>().ToString());
-        if (col.GetComponent<Blip>() != null &&
-            col.GetComponent<Blip>().ownerIsAi == this.ownerIsAi)
+        if (!this.isWorker)
         {
-            Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), col.GetComponent<Collider2D>());
-            return;
+            if (this.hp == 1)
+            {
+                transform.localScale = Vector2.one * 0.5f;
+            }
+        }
+
+        if (this.hp <= 0 )
+        {
+            Destroy(this.gameObject);
         }
     }
 
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        Debug.Log("in " + col.ToString());
+        //if (col.gameObject.tag == "BlipTranspThreePointedStarPrefab")
+        if (col.gameObject.GetComponent<Blip>() != null)
+        {
+            col.gameObject.GetComponent<Blip>().hp -= 1;
+            Debug.Log("clone bump1 " + col.ToString());
 
-    private void OnTriggerEnter2D(Collider2D col)
+            //if (col.gameObject.GetComponent<Blip>().hp <= 0)
+            //{
+            //    Destroy(col.gameObject);
+            //}
+        }
+
+        if (col.gameObject.GetComponent<Blip>() != null &&
+            col.gameObject.GetComponent<Blip>().ownerIsAi == this.ownerIsAi)
+        {
+            Debug.Log("same owner 2" + col.ToString() + col.gameObject.GetComponent<Blip>().ToString());
+            Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), col.gameObject.GetComponent<Collider2D>());
+        }
+
+        if (col.gameObject.tag == "BlipTranspThreePointedStarPrefab" &&
+            col.gameObject.GetComponent<Blip>().ownerIsAi == this.ownerIsAi)
+        {
+            Debug.Log("same owner 3" + col.ToString() + col.gameObject.GetComponent<Blip>().ToString());
+            //Physics2D.IgnoreCollision(col.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
     {
 
         var energyController = GameObject.FindWithTag("EnergyAmountText").GetComponent<EnergyController>();
