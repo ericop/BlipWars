@@ -1,0 +1,7 @@
+Image Assest for this game are from Glitch the Game https://www.glitchthegame.com/ and are in public domain.
+Music is by FoxSynergy (http://opengameart.org/content/planetrise)
+and by remaxim (http://opengameart.org/content/nature-theme-sketch)
+and by PetterTheSturgeon (http://opengameart.org/content/sci-fi-electronic-lost-signal) 
+Sounds effects by EricOP.
+This game BlipWars draws inspiration from all the sci-fi RTS games before it. Thanks for inspiring me ;)
+-EricOP https://github.com/ericop

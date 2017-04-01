@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class PlayerGenZoneController : MonoBehaviour
 {
-
     public GameObject blipShell;
     public float speed;
 
-    // Use this for initialization
     void Start()
     {
 
     }
 
-    // Update is called once per frame
     void Update()
     {
 

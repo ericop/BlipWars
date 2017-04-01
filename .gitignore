@@ -8,6 +8,15 @@ Desktop.ini
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
+
+# Visual Studio
+.vs
+
+#Compiled Unity Stuff
+obj
+Library
+
+
 # Windows Installer files
 *.cab
 *.msi

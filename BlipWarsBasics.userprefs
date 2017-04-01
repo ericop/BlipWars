@@ -1,0 +1,19 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\EnergyController.cs">
+    <Files>
+      <File FileName="Assets\scripts\MenuAction.cs" Line="1" Column="1" />
+      <File FileName="Assets\scripts\AiGenZoneController.cs" Line="42" Column="1" />
+      <File FileName="Assets\scripts\Blip.cs" Line="104" Column="41" />
+      <File FileName="Assets\scripts\EnergyController.cs" Line="44" Column="37" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="D:\Program Files (x86)\Unity\Projects\BlipWarsBasics\Assets\scripts\AiGenZoneController.cs" line="31" column="1" />
+      <Breakpoint file="D:\Program Files (x86)\Unity\Projects\BlipWarsBasics\Assets\scripts\Blip.cs" line="19" column="1" />
+      <Breakpoint file="D:\Program Files (x86)\Unity\Projects\BlipWarsBasics\Assets\scripts\AiGenZoneController.cs" line="42" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
