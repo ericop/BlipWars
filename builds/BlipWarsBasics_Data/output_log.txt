@@ -1,0 +1,37 @@
+Initialize engine version: 5.5.1f1 (88d00a7498cd)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: AMD Radeon R7 200 Series (ID=0x683d)
+    Vendor:   ATI
+    VRAM:     1005 MB
+    Driver:   21.19.137.514
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\Program Files (x86)\Unity\Projects\BlipWarsBasics\builds\BlipWarsBasics_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\Program Files (x86)\Unity\Projects\BlipWarsBasics\builds\BlipWarsBasics_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\Program Files (x86)\Unity\Projects\BlipWarsBasics\builds\BlipWarsBasics_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\Program Files (x86)\Unity\Projects\BlipWarsBasics\builds\BlipWarsBasics_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\Program Files (x86)\Unity\Projects\BlipWarsBasics\builds\BlipWarsBasics_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading D:\Program Files (x86)\Unity\Projects\BlipWarsBasics\builds\BlipWarsBasics_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: D:\Program Files (x86)\Unity\Projects\BlipWarsBasics\builds\BlipWarsBasics_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\Program Files (x86)\Unity\Projects\BlipWarsBasics\builds\BlipWarsBasics_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: D:\Program Files (x86)\Unity\Projects\BlipWarsBasics\builds\BlipWarsBasics_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading D:\Program Files (x86)\Unity\Projects\BlipWarsBasics\builds\BlipWarsBasics_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: D:\Program Files (x86)\Unity\Projects\BlipWarsBasics\builds\BlipWarsBasics_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll (this message is harmless)
+Loading D:\Program Files (x86)\Unity\Projects\BlipWarsBasics\builds\BlipWarsBasics_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
+- Completed reload, in  0.163 seconds
+Platform assembly: D:\Program Files (x86)\Unity\Projects\BlipWarsBasics\builds\BlipWarsBasics_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: D:\Program Files (x86)\Unity\Projects\BlipWarsBasics\builds\BlipWarsBasics_Data\Managed\System.dll (this message is harmless)
+desktop: 2560x1440 60Hz; virtual: 5600x1440 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.878175 ms
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 5.346823 ms
+
+Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 319.
+Total: 2.781010 ms (FindLiveObjects: 0.021519 ms CreateObjectMapping: 0.036086 ms MarkObjects: 0.107598 ms  DeleteObjects: 2.615142 ms)
+
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 2574 -> priority: 1 
