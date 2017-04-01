@@ -25,7 +25,7 @@ public class Blip : MonoBehaviour
             (isWorker ? Color.magenta : Color.red) :
             (isWorker ? Color.green : Color.blue);
         this.hp = this.isWorker ? 1 : 2;
-        this.speed = 1;
+        this.speed = this.isWorker ? 1 : 1.1f;
 
         var energyController = GameObject.FindWithTag("EnergyAmountText").GetComponent<EnergyController>();
         if (ownerIsAi)
@@ -59,22 +59,22 @@ public class Blip : MonoBehaviour
     {
         if (this.hasEnergy)
         {
-            transform.localScale = Vector2.one * 1.25f;
+            transform.localScale = new Vector2(1, 1.3f);
         }
         else
         {
-            transform.localScale = Vector2.one / 1.25f;
+            transform.localScale = Vector2.one;
         }
 
         if (!this.isWorker)
         {
             if (this.hp == 1)
             {
-                transform.localScale = Vector2.one * 0.5f;
+                transform.localScale = new Vector2(0.5f, 1);
             }
         }
 
-        if (this.hp <= 0 )
+        if (this.hp <= 0)
         {
             Destroy(this.gameObject);
         }
