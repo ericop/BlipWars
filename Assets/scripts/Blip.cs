@@ -88,26 +88,16 @@ public class Blip : MonoBehaviour
         {
             col.gameObject.GetComponent<Blip>().hp -= 1;
             Debug.Log("clone bump1 " + col.ToString());
-
-            //if (col.gameObject.GetComponent<Blip>().hp <= 0)
-            //{
-            //    Destroy(col.gameObject);
-            //}
         }
 
-        if (col.gameObject.GetComponent<Blip>() != null &&
-            col.gameObject.GetComponent<Blip>().ownerIsAi == this.ownerIsAi)
+        if (col.gameObject.GetComponent<BaseController>() != null &&
+            col.gameObject.GetComponent<BaseController>().ownerIsAi != this.ownerIsAi)
         {
-            Debug.Log("same owner 2" + col.ToString() + col.gameObject.GetComponent<Blip>().ToString());
-            Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), col.gameObject.GetComponent<Collider2D>());
+            col.gameObject.GetComponent<BaseController>().hp -= 1;
+            this.hp -= 1;
+            Debug.Log("base bump1 " + col.ToString());
         }
 
-        if (col.gameObject.tag == "BlipTranspThreePointedStarPrefab" &&
-            col.gameObject.GetComponent<Blip>().ownerIsAi == this.ownerIsAi)
-        {
-            Debug.Log("same owner 3" + col.ToString() + col.gameObject.GetComponent<Blip>().ToString());
-            //Physics2D.IgnoreCollision(col.GetComponent<Collider2D>(), GetComponent<Collider2D>());
-        }
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -127,7 +117,7 @@ public class Blip : MonoBehaviour
                     .velocity.y * -1);
         }
 
-        if (!firstTrip && col.gameObject.tag == "PlayerBase")
+        if (!firstTrip && col.gameObject.tag == "PlayerBase" && this.isWorker)
         {
             this.hasEnergy = false;
             energyController.AddEnergy();
@@ -139,7 +129,7 @@ public class Blip : MonoBehaviour
                 .velocity.y * -1);
         }
 
-        if (!firstTrip && col.gameObject.tag == "AiBase")
+        if (!firstTrip && col.gameObject.tag == "AiBase" && this.isWorker)
         {
             this.hasEnergy = false;
             energyController.AddAiEnergy();
@@ -149,6 +139,22 @@ public class Blip : MonoBehaviour
                 .velocity.x * -1,
             GetComponent<Rigidbody2D>()
                 .velocity.y * -1);
+        }
+
+        if (col.gameObject.tag == "PlayerBase" && !this.isWorker && this.ownerIsAi)
+        {
+            Debug.Log("PlayerBase" + col.ToString());
+            col.gameObject.GetComponent<BaseController>().hp -= 1;
+            this.hp = 0;
+            Debug.Log("base bump1 " + col.ToString());
+        }
+
+        if (col.gameObject.tag == "AiBase" && !this.isWorker && !this.ownerIsAi)
+        {
+            Debug.Log("AiBase" + col.ToString());
+            col.gameObject.GetComponent<BaseController>().hp -= 1;
+            this.hp = 0;
+            Debug.Log("base bump1 " + col.ToString());
         }
     }
 }

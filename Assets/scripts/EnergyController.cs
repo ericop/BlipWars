@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EnergyController : MonoBehaviour
 {
@@ -63,4 +64,30 @@ public class EnergyController : MonoBehaviour
         var energyText = GameObject.FindWithTag("AiEnergyAmountText").GetComponent<Text>();
         energyText.text = "Bad Guy Energy: " + aiEnergy;
     }
+
+    public void PlayerWins()
+    {
+        var energyText = GameObject.FindWithTag("EnergyAmountText").GetComponent<Text>();
+        energyText.text = "You Win!";
+        var aiEnergyText = GameObject.FindWithTag("AiEnergyAmountText").GetComponent<Text>();
+        aiEnergyText.text = "Bad Guy Has Lost :(";
+
+        StartCoroutine("ReturnToMenuAfterWin");
+    }
+
+    public void AiWins()
+    {
+        var energyText = GameObject.FindWithTag("EnergyAmountText").GetComponent<Text>();
+        energyText.text = "You Have Lost :(";
+        var aiEnergyText = GameObject.FindWithTag("AiEnergyAmountText").GetComponent<Text>();
+        aiEnergyText.text = "Bad Guy Has Won!";
+
+        StartCoroutine("ReturnToMenuAfterWin");
+    }
+
+    IEnumerator ReturnToMenuAfterWin()
+    {
+        SceneManager.LoadScene("menu");
+    }
+
 }
