@@ -56,7 +56,7 @@ public class EnergyController : MonoBehaviour
     public void UpdateEnergyAmountText()
     {
         var energyText = GameObject.FindWithTag("EnergyAmountText").GetComponent<Text>();
-        energyText.text = "Energy: " + playerEnergy;
+        energyText.text = "Good Guy Energy: " + playerEnergy;
     }
 
     public void UpdateAiEnergyAmountText()
@@ -67,7 +67,13 @@ public class EnergyController : MonoBehaviour
 
     public void PlayerWins()
     {
-        var energyText = GameObject.FindWithTag("EnergyAmountText").GetComponent<Text>();
+        var blipArray = GameObject.FindGameObjectsWithTag("BlipTranspThreePointedStarPrefab");
+
+        foreach (var blip in blipArray)
+        {
+            Destroy(blip);
+        }
+            var energyText = GameObject.FindWithTag("EnergyAmountText").GetComponent<Text>();
         energyText.text = "You Win!";
         var aiEnergyText = GameObject.FindWithTag("AiEnergyAmountText").GetComponent<Text>();
         aiEnergyText.text = "Bad Guy Has Lost :(";
@@ -77,6 +83,12 @@ public class EnergyController : MonoBehaviour
 
     public void AiWins()
     {
+        var blipArray = GameObject.FindGameObjectsWithTag("BlipTranspThreePointedStarPrefab");
+
+        foreach (var blip in blipArray)
+        {
+            Destroy(blip);
+        }
         var energyText = GameObject.FindWithTag("EnergyAmountText").GetComponent<Text>();
         energyText.text = "You Have Lost :(";
         var aiEnergyText = GameObject.FindWithTag("AiEnergyAmountText").GetComponent<Text>();
@@ -87,6 +99,7 @@ public class EnergyController : MonoBehaviour
 
     IEnumerator ReturnToMenuAfterWin()
     {
+        yield return new WaitForSeconds(2.5f);
         SceneManager.LoadScene("menu");
     }
 
