@@ -5,14 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MenuAction : MonoBehaviour
 {
-
-    // Use this for initialization
     void Start()
     {
-
+        AudioListener.volume = PlayerPrefs.HasKey("volume") ? PlayerPrefs.GetFloat("volume") : 1f;
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -21,5 +18,10 @@ public class MenuAction : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene("level1");
+    }
+
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene("menu");
     }
 }

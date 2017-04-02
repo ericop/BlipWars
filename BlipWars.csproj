@@ -86,6 +86,7 @@
     <Compile Include="Assets\scripts\Blip.cs" />
     <Compile Include="Assets\scripts\EnergyController.cs" />
     <Compile Include="Assets\scripts\MenuAction.cs" />
+    <Compile Include="Assets\scripts\MuteButtonController.cs" />
     <Compile Include="Assets\scripts\PlayerGenZoneController.cs" />
   </ItemGroup>
   <ItemGroup>
