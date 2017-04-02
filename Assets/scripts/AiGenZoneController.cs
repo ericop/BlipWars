@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AiGenZoneController : MonoBehaviour
 {
@@ -17,9 +18,14 @@ public class AiGenZoneController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        var energyController = GameObject.FindWithTag("EnergyAmountText").GetComponent<EnergyController>();
+        var attackerButton = GameObject.FindWithTag("AiAddAttackerButton").GetComponent<Button>();
+
+        attackerButton.interactable = energyController.aiEnergy >= 100;
+
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            var energyController = GameObject.FindWithTag("EnergyAmountText").GetComponent<EnergyController>();
             if (energyController.aiEnergy >= 25)
             {
                 var workerClone = Instantiate(blipShell,
@@ -34,8 +40,7 @@ public class AiGenZoneController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            var energyController = GameObject.FindWithTag("EnergyAmountText").GetComponent<EnergyController>();
-            if (energyController.aiEnergy >= 25)
+            if (energyController.aiEnergy >= 100)
             {
                 var workerClone = Instantiate(blipShell,
                     new Vector2(transform.position.x,
@@ -66,7 +71,7 @@ public class AiGenZoneController : MonoBehaviour
     public void AddAiAttacker()
     {
         var energyController = GameObject.FindWithTag("EnergyAmountText").GetComponent<EnergyController>();
-        if (energyController.aiEnergy >= 25)
+        if (energyController.aiEnergy >= 100)
         {
             var workerClone = Instantiate(blipShell,
             new Vector2(transform.position.x,

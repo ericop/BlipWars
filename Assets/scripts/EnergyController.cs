@@ -68,38 +68,38 @@ public class EnergyController : MonoBehaviour
     public void PlayerWins()
     {
         var blipArray = GameObject.FindGameObjectsWithTag("BlipTranspThreePointedStarPrefab");
-
+        var energyText = GameObject.FindWithTag("EnergyAmountText").GetComponent<Text>();
+        energyText.text = "Good Guy Has Won!";
+        var aiEnergyText = GameObject.FindWithTag("AiEnergyAmountText").GetComponent<Text>();
+        aiEnergyText.text = "Bad Guy Has Lost :(";
+        StartCoroutine("ReturnToMenuAfterWin");
         foreach (var blip in blipArray)
         {
             Destroy(blip);
         }
-            var energyText = GameObject.FindWithTag("EnergyAmountText").GetComponent<Text>();
-        energyText.text = "You Win!";
-        var aiEnergyText = GameObject.FindWithTag("AiEnergyAmountText").GetComponent<Text>();
+        energyText.text = "Good Guy Has Won!";
         aiEnergyText.text = "Bad Guy Has Lost :(";
-
-        StartCoroutine("ReturnToMenuAfterWin");
     }
 
     public void AiWins()
     {
         var blipArray = GameObject.FindGameObjectsWithTag("BlipTranspThreePointedStarPrefab");
-
+        var energyText = GameObject.FindWithTag("EnergyAmountText").GetComponent<Text>();
+        energyText.text = "Good Guy Has Lost :(";
+        var aiEnergyText = GameObject.FindWithTag("AiEnergyAmountText").GetComponent<Text>();
+        aiEnergyText.text = "Bad Guy Has Won!";
+        StartCoroutine("ReturnToMenuAfterWin");
         foreach (var blip in blipArray)
         {
             Destroy(blip);
         }
-        var energyText = GameObject.FindWithTag("EnergyAmountText").GetComponent<Text>();
-        energyText.text = "You Have Lost :(";
-        var aiEnergyText = GameObject.FindWithTag("AiEnergyAmountText").GetComponent<Text>();
+        energyText.text = "Good Guy Has Lost :(";
         aiEnergyText.text = "Bad Guy Has Won!";
-
-        StartCoroutine("ReturnToMenuAfterWin");
     }
 
     IEnumerator ReturnToMenuAfterWin()
     {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("menu");
     }
 

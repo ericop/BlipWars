@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerGenZoneController : MonoBehaviour
 {
@@ -14,9 +15,13 @@ public class PlayerGenZoneController : MonoBehaviour
 
     void Update()
     {
+        var energyController = GameObject.FindWithTag("EnergyAmountText").GetComponent<EnergyController>();
+        var attackerButton = GameObject.FindWithTag("AddAttackerButton").GetComponent<Button>();
+
+        attackerButton.interactable = energyController.playerEnergy >= 100;
+
         if (Input.GetKey(KeyCode.A))
         {
-            var energyController = GameObject.FindWithTag("EnergyAmountText").GetComponent<EnergyController>();
             if (energyController.playerEnergy >= 25)
             {
                 var workerClone = Instantiate(blipShell,
@@ -31,8 +36,7 @@ public class PlayerGenZoneController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Z))
         {
-            var energyController = GameObject.FindWithTag("EnergyAmountText").GetComponent<EnergyController>();
-            if (energyController.playerEnergy >= 25)
+            if (energyController.playerEnergy >= 100)
             {
                 var workerClone = Instantiate(blipShell,
                     new Vector2(transform.position.x,
@@ -63,7 +67,7 @@ public class PlayerGenZoneController : MonoBehaviour
     public void AddAttacker()
     {
         var energyController = GameObject.FindWithTag("EnergyAmountText").GetComponent<EnergyController>();
-        if (energyController.playerEnergy >= 25)
+        if (energyController.playerEnergy >= 100)
         {
             var workerClone = Instantiate(blipShell,
             new Vector2(transform.position.x, transform.position.y), transform.rotation) as GameObject;
