@@ -5,12 +5,17 @@ Unity 2D RTS that's simple yet interesting. *It's a Blip!*
 
 ## Game play
 
-This is a 2 player game where each player controls a frog to catch fireflies to add to his collection. First frog to 20 fireflies wins.
+This is a 2 player game where each player controls a base. Each base has 10 Hit Points, after 10 hits by attackers, it's dead and you lose to your worhty oponenent.
 
-- To control the left frog (Blue Hugh) click the left button (on mobile) or hit W, A, S, D or Spacebar . All will send him leaping to the other lily pad.
-- To control the right frog (Red Fred) click the right button (on mobile) or hit Up, Left, Down, Right or Enter . All will send him leaping to the other lily pad.
-- Hit Escape to Exit the game. On mobile you need to open all open active screens on your device and close it from there.
+- To control the Good Guy Base 
+  - Click the Add Good Guy Worker button (or hit `A`), costing 25 energy. *Each return trip from the `Energy Well` you get 10 energy.*
+  - Click the Add Good Guy Worker button (or hit `Z`), costing 25 energy. *You must have at least 100 energy to build attackers.*
+- To control the Bad Guy Base 
+  - Click the Add Bad Guy Worker button (or hit `UP`), costing 25 energy. *Each return trip from the `Energy Well` you get 10 energy.*
+  - Click the Add Bad Guy Worker button (or hit `DOWN`), costing 25 energy. *You must have at least 100 energy to build attackers.*
 
 ## Games Assets
 
-- This game uses visuals (.png files) extracted from https://www.glitchthegame.com/public-domain-game-art/ 
+- Music is by FoxSynergy (http://opengameart.org/content/planetrise) and by remaxim (http://opengameart.org/content/nature-theme-sketch) and by PetterTheSturgeon (http://opengameart.org/content/sci-fi-electronic-lost-signal) 
+- This game BlipWars draws inspiration from all the sci-fi RTS games before it. Thanks for inspiring me ;)
+- EricOP https://github.com/ericop for other graphics and sound effects
