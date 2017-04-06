@@ -1,5 +1,5 @@
 # BlipWars
-Unity 2D RTS that's simple yet interesting. *It's a Blip!*
+Unity 2D RTS game that's simple yet interesting!
 
 ![image](https://cloud.githubusercontent.com/assets/5218249/24610557/0051d80a-184d-11e7-813b-b8b596375e9c.png)
 
@@ -19,3 +19,10 @@ This is a 2 player game where each player controls a base. Each base has 10 Hit 
 - Music is by FoxSynergy (http://opengameart.org/content/planetrise) and by remaxim (http://opengameart.org/content/nature-theme-sketch) and by PetterTheSturgeon (http://opengameart.org/content/sci-fi-electronic-lost-signal) 
 - This game BlipWars draws inspiration from all the sci-fi RTS games before it. Thanks for inspiring me ;)
 - EricOP https://github.com/ericop for other graphics and sound effects
+
+## To Do
+- [ ] Add project landing page with [cool theme](http://themes.gohugo.io/github-project-landing-page/)
+- [ ] Add 1 player mode vs AI
+- [ ] Add *Pin Selector* to replace buttons for building new units
+- [ ] Add first two specialists, Researcher and Sniper
+- [ ] Add other specialists as time allows
