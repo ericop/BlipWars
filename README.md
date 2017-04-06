@@ -16,7 +16,7 @@ This is a 2 player game where each player controls a base. Each base has 10 Hit 
 
 ## Games Assets
 
-- Music is by *FoxSynergy* (http://opengameart.org/content/planetrise) and by *remaxim* (http://opengameart.org/content/nature-theme-sketch) 
+- Music is by *FoxSynergy* (http://opengameart.org/content/planetrise) and by *PetterTheSturgeon* (http://opengameart.org/content/sci-fi-electronic-lost-signal)
 - EricOP https://github.com/ericop for other graphics and sound effects
 - This game BlipWars draws inspiration from all the sci-fi RTS games before it. Thanks for inspiring me ;)
 
