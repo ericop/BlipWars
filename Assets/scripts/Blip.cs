@@ -82,21 +82,6 @@ public class Blip : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        Debug.Log("in " + col.ToString());
-        //if (col.gameObject.tag == "BlipTranspThreePointedStarPrefab")
-        if (col.gameObject.GetComponent<Blip>() != null)
-        {
-            col.gameObject.GetComponent<Blip>().hp -= 1;
-            Debug.Log("clone bump1 " + col.ToString());
-        }
-
-        if (col.gameObject.GetComponent<BaseController>() != null &&
-            col.gameObject.GetComponent<BaseController>().ownerIsAi != this.ownerIsAi)
-        {
-            col.gameObject.GetComponent<BaseController>().hp -= 1;
-            this.hp -= 1;
-            Debug.Log("base bump1 " + col.ToString());
-        }
 
     }
 
@@ -115,6 +100,21 @@ public class Blip : MonoBehaviour
                     .velocity.x * -1,
                 GetComponent<Rigidbody2D>()
                     .velocity.y * -1);
+        }
+
+        //if (col.gameObject.tag == "BlipTranspThreePointedStarPrefab")
+        if (col.gameObject.GetComponent<Blip>() != null)
+        {
+            col.gameObject.GetComponent<Blip>().hp -= 1;
+            Debug.Log("clone bump1 " + col.ToString());
+        }
+
+        if (col.gameObject.GetComponent<BaseController>() != null &&
+            col.gameObject.GetComponent<BaseController>().ownerIsAi != this.ownerIsAi)
+        {
+            col.gameObject.GetComponent<BaseController>().hp -= 1;
+            this.hp -= 1;
+            Debug.Log("base bump1 " + col.ToString());
         }
 
         if (!firstTrip && col.gameObject.tag == "PlayerBase" && this.isWorker)
