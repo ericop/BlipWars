@@ -26,10 +26,11 @@ public class PlayerChoiceBoxController : MonoBehaviour
 
     void OnMouseDown()
     {
-        xOfClick = Input.mousePosition.x;
-        yOfClick = Input.mousePosition.y;
-        Debug.Log("clicks x:" + xOfClick + ", y:" + yOfClick);
-        Debug.Log("x:" + (xOfClick - xCenter) + ", y:" + (yOfClick - yCenter));
+        var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        xOfClick = pos.x;
+        yOfClick = pos.y;
+        Debug.Log("clicks x:" + xOfClick + ", y:" + yOfClick + " |centers x: " + xCenter + ", y: " + yCenter);
+        //Debug.Log("x:" + (xOfClick - xCenter) + ", y:" + (yOfClick - yCenter));
     }
 
     // Update is called once per frame
