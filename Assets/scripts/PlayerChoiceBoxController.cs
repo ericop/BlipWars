@@ -18,8 +18,8 @@ public class PlayerChoiceBoxController : MonoBehaviour
 
         Vector3 pos = Camera.main.ScreenToWorldPoint(transform.position);
 
-        xCenter = transform.position.x;
-        yCenter = transform.position.y;
+        xCenter = transform.localPosition.x;
+        yCenter = transform.localPosition.y;
         Debug.Log("centers x:" + xCenter + ", y:" + yCenter);
 
     }
