@@ -106,6 +106,10 @@ public class Blip : MonoBehaviour
         if (col.gameObject.GetComponent<Blip>() != null)
         {
             col.gameObject.GetComponent<Blip>().hp -= 1;
+            if (!this.isWorker && this.hp > 0)
+            {
+                StartCoroutine("AttackerFallsBack");
+            }
             Debug.Log("clone bump1 " + col.ToString());
         }
 
@@ -156,5 +160,15 @@ public class Blip : MonoBehaviour
             this.hp = 0;
             Debug.Log("base bump1 " + col.ToString());
         }
+    }
+
+    IEnumerator AttackerFallsBack()
+    {
+        var currentVelecity = this.GetComponent<Rigidbody2D>().velocity;
+
+        this.GetComponent<Rigidbody2D>().velocity = new Vector2(-0.3f * currentVelecity.x, -0.3f * currentVelecity.y);
+
+        yield return new WaitForSeconds(0.2f);
+        this.GetComponent<Rigidbody2D>().velocity = currentVelecity;
     }
 }
