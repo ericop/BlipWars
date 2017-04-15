@@ -30,7 +30,7 @@ public class PlayerGenZoneController : MonoBehaviour
                 var blip = workerClone.GetComponent<Blip>();
                 blip.Init(true, false);
                 workerClone.GetComponent<SpriteRenderer>().material.color = blip.color;
-                workerClone.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * 1, speed * 0.5f);
+                workerClone.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * 3, speed * 1.5f);
             }
         }
 
@@ -44,7 +44,7 @@ public class PlayerGenZoneController : MonoBehaviour
                 var blip = workerClone.GetComponent<Blip>();
                 blip.Init(false, false);
                 workerClone.GetComponent<SpriteRenderer>().material.color = blip.color;
-                workerClone.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * 1, speed * 0.5f);
+                workerClone.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * 3, speed * 1.5f);
             }
         }
 
@@ -60,7 +60,7 @@ public class PlayerGenZoneController : MonoBehaviour
             var blip = workerClone.GetComponent<Blip>();
             blip.Init(true, false);
             workerClone.GetComponent<SpriteRenderer>().material.color = blip.color;
-            workerClone.GetComponent<Rigidbody2D>().velocity = new Vector2(speed, speed * 0.5f);
+            workerClone.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * 3, speed * 1.5f);
         }
     }
 
@@ -74,7 +74,7 @@ public class PlayerGenZoneController : MonoBehaviour
             var blip = workerClone.GetComponent<Blip>();
             blip.Init(false, false);
             workerClone.GetComponent<SpriteRenderer>().material.color = blip.color;
-            workerClone.GetComponent<Rigidbody2D>().velocity = new Vector2(speed, speed * 0.5f);
+            workerClone.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * 3, speed * 1.5f);
         }
     }
 }

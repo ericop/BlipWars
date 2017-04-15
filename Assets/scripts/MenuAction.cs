@@ -15,10 +15,17 @@ public class MenuAction : MonoBehaviour
 
     }
 
-    public void StartGame()
+    public void StartOnePlayerGame()
     {
         SceneManager.LoadScene("level1");
     }
+
+    public void StartTwoPlayerGame()
+    {
+        SceneManager.LoadScene("level2");
+    }
+
+
 
     public void GoToMenu()
     {
