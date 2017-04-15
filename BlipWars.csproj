@@ -89,6 +89,7 @@
     <Compile Include="Assets\scripts\MuteButtonController.cs" />
     <Compile Include="Assets\scripts\PlayerChoiceBoxController.cs" />
     <Compile Include="Assets\scripts\PlayerGenZoneController.cs" />
+    <Compile Include="Assets\scripts\SaveEnergyController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\fonts\Nova_Mono\OFL.txt" />

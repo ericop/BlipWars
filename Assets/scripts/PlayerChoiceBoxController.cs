@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerChoiceBoxController : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class PlayerChoiceBoxController : MonoBehaviour
 
     float xCenter = 0;
     float yCenter = 0;
+
+    float xDiff = 0;
+    float yDiff = 0;
 
     void Start()
     {
@@ -29,8 +33,61 @@ public class PlayerChoiceBoxController : MonoBehaviour
         var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         xOfClick = pos.x;
         yOfClick = pos.y;
-        Debug.Log("clicks x:" + xOfClick + ", y:" + yOfClick + " |centers x: " + xCenter + ", y: " + yCenter);
+        xDiff = (xOfClick - xCenter);
+        yDiff = (yOfClick - yCenter);
+        Debug.Log("clicks x:" + xOfClick + ", y:" + yOfClick + " |centers x: " + xCenter + ", y: " + yCenter + "| diff x:" + xDiff + "| diff y:" + yDiff);
         //Debug.Log("x:" + (xOfClick - xCenter) + ", y:" + (yOfClick - yCenter));
+
+
+        var spendingPin = GameObject.FindWithTag("SpendingPin");
+        spendingPin.transform.position = new Vector2(xOfClick, yOfClick);
+
+        // Build Attackers
+        if ((xDiff > 0 && xDiff < 1) &&
+            (yDiff > 0 && yDiff < 1))
+        {
+            var currentCommandText = GameObject.FindWithTag("CurrentCommandText").GetComponent<Text>(); ;
+            currentCommandText.text = "Current Command: 2xAtt,...";
+            var playerGenZoneController = GameObject.FindWithTag("PlayerGenZone").GetComponent<PlayerGenZoneController>();
+            playerGenZoneController.AddAttacker();
+            playerGenZoneController.AddAttacker();
+
+        }
+
+        if ((xDiff > 1 && xDiff < 2) &&
+            (yDiff > 1 && yDiff < 2))
+        {
+            var currentCommandText = GameObject.FindWithTag("CurrentCommandText").GetComponent<Text>(); ;
+            currentCommandText.text = "Current Command: 4xAtt,...";
+            var playerGenZoneController = GameObject.FindWithTag("PlayerGenZone").GetComponent<PlayerGenZoneController>();
+            playerGenZoneController.AddAttacker();
+            playerGenZoneController.AddAttacker();
+            playerGenZoneController.AddAttacker();
+            playerGenZoneController.AddAttacker();
+        }
+
+        // Builder Workers
+        if ((xDiff < 0 && xDiff > -1) &&
+            (yDiff < 0 && yDiff > -1))
+        {
+            var currentCommandText = GameObject.FindWithTag("CurrentCommandText").GetComponent<Text>(); ;
+            currentCommandText.text = "Current Command: 2xWork,...";
+            var playerGenZoneController = GameObject.FindWithTag("PlayerGenZone").GetComponent<PlayerGenZoneController>();
+            playerGenZoneController.AddWorker();
+            playerGenZoneController.AddWorker();
+        }
+
+        if ((xDiff < -1 && xDiff > -2) &&
+            (yDiff < -1 && yDiff > -2))
+        {
+            var currentCommandText = GameObject.FindWithTag("CurrentCommandText").GetComponent<Text>(); ;
+            currentCommandText.text = "Current Command: 4xWork";
+            var playerGenZoneController = GameObject.FindWithTag("PlayerGenZone").GetComponent<PlayerGenZoneController>();
+            playerGenZoneController.AddWorker();
+            playerGenZoneController.AddWorker();
+            playerGenZoneController.AddWorker();
+            playerGenZoneController.AddWorker();
+        }
     }
 
     // Update is called once per frame
