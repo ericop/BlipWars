@@ -1,10 +1,16 @@
-﻿using System.Collections;
+﻿using Assets.scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerChoiceBoxController : MonoBehaviour
 {
+    BuildPerTick buildPerTick;
+    int attackerPerTick = 0;
+    int workersPerTick = 0;
+    int specialistPerTick = 0;
+    int reseachPerTick = 0;
 
     float xOfClick = 0;
     float yOfClick = 0;
@@ -17,15 +23,28 @@ public class PlayerChoiceBoxController : MonoBehaviour
 
     void Start()
     {
-        var shape = GetComponent<Collider2D>();
+        buildPerTick = new BuildPerTick()
+        {
+            AttackerPerTick = 0,
+            WorkersPerTick = 0,
+            SpecialistPerTick = 0,
+            ResearchPerTick = 0
+        };
+
+    var shape = GetComponent<Collider2D>();
         var selectRectangleCenter = shape.bounds.center;
 
-        Vector3 pos = Camera.main.ScreenToWorldPoint(transform.position);
+        //Vector3 pos = Camera.main.ScreenToWorldPoint(transform.position);
 
         xCenter = transform.localPosition.x;
         yCenter = transform.localPosition.y;
         Debug.Log("centers x:" + xCenter + ", y:" + yCenter);
 
+    }
+
+    private void Update()
+    {
+        StartCoroutine("AddUnit", buildPerTick);
     }
 
     void OnMouseDown()
@@ -49,8 +68,13 @@ public class PlayerChoiceBoxController : MonoBehaviour
             var currentCommandText = GameObject.FindWithTag("CurrentCommandText").GetComponent<Text>(); ;
             currentCommandText.text = "Current Command: 2xAtt,...";
             var playerGenZoneController = GameObject.FindWithTag("PlayerGenZone").GetComponent<PlayerGenZoneController>();
-            playerGenZoneController.AddAttacker();
-            playerGenZoneController.AddAttacker();
+            buildPerTick = new BuildPerTick()
+            {
+                AttackerPerTick = 2,
+                WorkersPerTick = 0,
+                SpecialistPerTick = 0,
+                ResearchPerTick = 0
+            };
 
         }
 
@@ -60,10 +84,13 @@ public class PlayerChoiceBoxController : MonoBehaviour
             var currentCommandText = GameObject.FindWithTag("CurrentCommandText").GetComponent<Text>(); ;
             currentCommandText.text = "Current Command: 4xAtt,...";
             var playerGenZoneController = GameObject.FindWithTag("PlayerGenZone").GetComponent<PlayerGenZoneController>();
-            playerGenZoneController.AddAttacker();
-            playerGenZoneController.AddAttacker();
-            playerGenZoneController.AddAttacker();
-            playerGenZoneController.AddAttacker();
+            buildPerTick = new BuildPerTick()
+            {
+                AttackerPerTick = 4,
+                WorkersPerTick = 0,
+                SpecialistPerTick = 0,
+                ResearchPerTick = 0
+            };
         }
 
         // Builder Workers
@@ -73,8 +100,13 @@ public class PlayerChoiceBoxController : MonoBehaviour
             var currentCommandText = GameObject.FindWithTag("CurrentCommandText").GetComponent<Text>(); ;
             currentCommandText.text = "Current Command: 2xWork,...";
             var playerGenZoneController = GameObject.FindWithTag("PlayerGenZone").GetComponent<PlayerGenZoneController>();
-            playerGenZoneController.AddWorker();
-            playerGenZoneController.AddWorker();
+            buildPerTick = new BuildPerTick()
+            {
+                AttackerPerTick = 0,
+                WorkersPerTick = 2,
+                SpecialistPerTick = 0,
+                ResearchPerTick = 0
+            };
         }
 
         if ((xDiff < -1 && xDiff > -2) &&
@@ -83,36 +115,14 @@ public class PlayerChoiceBoxController : MonoBehaviour
             var currentCommandText = GameObject.FindWithTag("CurrentCommandText").GetComponent<Text>(); ;
             currentCommandText.text = "Current Command: 4xWork";
             var playerGenZoneController = GameObject.FindWithTag("PlayerGenZone").GetComponent<PlayerGenZoneController>();
-            playerGenZoneController.AddWorker();
-            playerGenZoneController.AddWorker();
-            playerGenZoneController.AddWorker();
-            playerGenZoneController.AddWorker();
+            buildPerTick = new BuildPerTick()
+            {
+                AttackerPerTick = 0,
+                WorkersPerTick = 4,
+                SpecialistPerTick = 0,
+                ResearchPerTick = 0
+            };
         }
     }
 
-    // Update is called once per frame
-    //void Update()
-    //{
-    //    if (Input.GetMouseButtonDown(0)
-    //         //&&
-    //         //Input.mousePosition.x > 648 &&
-    //         // Input.mousePosition.x < 1048 && 
-    //         // Input.mousePosition.y > 21 && 
-    //         // Input.mousePosition.y < 190 
-    //         )
-    //    {
-    //        //var mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-    //        //Debug.Log("mousePosition:" + mousePosition);
-    //    }
-    //    if (Input.touchCount > 0 && Input.touchCount < 3)
-    //    {
-    //        var touchPosition = Input.GetTouch(1).position;
-    //        Debug.Log("touchPosition1:" + touchPosition);
-
-    //        var touchPosition2 = Input.GetTouch(2).position;
-    //        Debug.Log("touchPosition2:" + touchPosition2);
-
-    //    }
-
-    //}
 }
