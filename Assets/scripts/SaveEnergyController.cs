@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,9 +23,17 @@ public class SaveEnergyController : MonoBehaviour {
         var spendingPin = GameObject.FindWithTag("SpendingPin");
         spendingPin.transform.position = new Vector2(xOfClick, yOfClick);
 
+        var playerChoiceBox = GameObject.FindWithTag("PlayerChoiceBox").GetComponent<PlayerChoiceBoxController>();
+        playerChoiceBox.BuildPerTick = new BuildPerTick()
+        {
+            Attackers = 0,
+            Workers = 0,
+            Snipers = 0,
+            TaskMasters = 0
+        };
 
-        var currentCommandText = GameObject.FindWithTag("CurrentCommandText").GetComponent<Text>(); ;
-        currentCommandText.text = "Current Command: Save Energy";
+        var currentCommandText = GameObject.FindWithTag("CurrentCommandText").GetComponent<Text>();
+        currentCommandText.text = playerChoiceBox.BuildPerTick.CurrentCommand();
     }
 }
 

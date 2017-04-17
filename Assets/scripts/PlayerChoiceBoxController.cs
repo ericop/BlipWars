@@ -6,11 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerChoiceBoxController : MonoBehaviour
 {
-    BuildPerTick buildPerTick;
-    int attackerPerTick = 0;
-    int workersPerTick = 0;
-    int specialistPerTick = 0;
-    int reseachPerTick = 0;
+    private BuildPerTick buildPerTick;
 
     float xOfClick = 0;
     float yOfClick = 0;
@@ -21,17 +17,30 @@ public class PlayerChoiceBoxController : MonoBehaviour
     float xDiff = 0;
     float yDiff = 0;
 
+    internal BuildPerTick BuildPerTick
+    {
+        get
+        {
+            return buildPerTick;
+        }
+
+        set
+        {
+            buildPerTick = value;
+        }
+    }
+
     void Start()
     {
-        buildPerTick = new BuildPerTick()
+        BuildPerTick = new BuildPerTick()
         {
-            AttackerPerTick = 0,
-            WorkersPerTick = 0,
-            SpecialistPerTick = 0,
-            ResearchPerTick = 0
+            Attackers = 0,
+            Workers = 0,
+            Snipers = 0,
+            TaskMasters = 0
         };
 
-    var shape = GetComponent<Collider2D>();
+        var shape = GetComponent<Collider2D>();
         var selectRectangleCenter = shape.bounds.center;
 
         //Vector3 pos = Camera.main.ScreenToWorldPoint(transform.position);
@@ -40,22 +49,75 @@ public class PlayerChoiceBoxController : MonoBehaviour
         yCenter = transform.localPosition.y;
         Debug.Log("centers x:" + xCenter + ", y:" + yCenter);
 
+        StartCoroutine("DoChecks");
     }
 
     private void Update()
     {
-        StartCoroutine("AddUnit", buildPerTick);
+        //
+    }
+
+    IEnumerator DoChecks()
+    {
+        for (;;)
+        {
+            StartCoroutine("AddUnits", BuildPerTick);
+            yield return new WaitForSeconds(.25f);
+        }
+    }
+
+    IEnumerator AddUnits(BuildPerTick buildPerTick)
+    {
+        var playerGenZoneController = GameObject.FindWithTag("PlayerGenZone").GetComponent<PlayerGenZoneController>();
+        var energyController = GameObject.FindWithTag("EnergyAmountText").GetComponent<EnergyController>();
+
+        if (buildPerTick.Snipers > 0)
+        {
+            for (int i = 0; i < buildPerTick.Snipers; i++)
+            {
+                //yield return new WaitForSeconds(0.1f);
+                //playerGenZoneController.AddSniper();
+                //energyController.SubtractEnergy();
+
+            }
+        }
+        if (buildPerTick.TaskMasters > 0)
+        {
+            for (int i = 0; i < buildPerTick.TaskMasters; i++)
+            {
+                //yield return new WaitForSeconds(0.1f);
+                //playerGenZoneController.AddTaskMaster();
+                //energyController.SubtractEnergy();
+            }
+        }
+        if (buildPerTick.Attackers > 0)
+        {
+            for (int i = 0; i < buildPerTick.Attackers; i++)
+            {
+                playerGenZoneController.AddAttacker();
+                yield return new WaitForSeconds(1);
+
+            }
+        }
+        if (buildPerTick.Workers > 0)
+        {
+            for (int i = 0; i < buildPerTick.Workers; i++)
+            {
+                playerGenZoneController.AddWorker();
+                yield return new WaitForSeconds(1);
+            }
+        }
     }
 
     void OnMouseDown()
     {
+        var currentCommandText = GameObject.FindWithTag("CurrentCommandText").GetComponent<Text>(); ;
         var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         xOfClick = pos.x;
         yOfClick = pos.y;
         xDiff = (xOfClick - xCenter);
         yDiff = (yOfClick - yCenter);
         Debug.Log("clicks x:" + xOfClick + ", y:" + yOfClick + " |centers x: " + xCenter + ", y: " + yCenter + "| diff x:" + xDiff + "| diff y:" + yDiff);
-        //Debug.Log("x:" + (xOfClick - xCenter) + ", y:" + (yOfClick - yCenter));
 
 
         var spendingPin = GameObject.FindWithTag("SpendingPin");
@@ -65,63 +127,57 @@ public class PlayerChoiceBoxController : MonoBehaviour
         if ((xDiff > 0 && xDiff < 1) &&
             (yDiff > 0 && yDiff < 1))
         {
-            var currentCommandText = GameObject.FindWithTag("CurrentCommandText").GetComponent<Text>(); ;
-            currentCommandText.text = "Current Command: 2xAtt,...";
-            var playerGenZoneController = GameObject.FindWithTag("PlayerGenZone").GetComponent<PlayerGenZoneController>();
-            buildPerTick = new BuildPerTick()
+            BuildPerTick = new BuildPerTick()
             {
-                AttackerPerTick = 2,
-                WorkersPerTick = 0,
-                SpecialistPerTick = 0,
-                ResearchPerTick = 0
+                Attackers = 2,
+                Workers = 0,
+                Snipers = 0,
+                TaskMasters = 0
             };
+            currentCommandText.text = BuildPerTick.CurrentCommand();
 
         }
 
         if ((xDiff > 1 && xDiff < 2) &&
             (yDiff > 1 && yDiff < 2))
         {
-            var currentCommandText = GameObject.FindWithTag("CurrentCommandText").GetComponent<Text>(); ;
-            currentCommandText.text = "Current Command: 4xAtt,...";
-            var playerGenZoneController = GameObject.FindWithTag("PlayerGenZone").GetComponent<PlayerGenZoneController>();
-            buildPerTick = new BuildPerTick()
+            BuildPerTick = new BuildPerTick()
             {
-                AttackerPerTick = 4,
-                WorkersPerTick = 0,
-                SpecialistPerTick = 0,
-                ResearchPerTick = 0
+                Attackers = 4,
+                Workers = 0,
+                Snipers = 0,
+                TaskMasters = 0
             };
+            currentCommandText.text = BuildPerTick.CurrentCommand();
         }
 
         // Builder Workers
         if ((xDiff < 0 && xDiff > -1) &&
             (yDiff < 0 && yDiff > -1))
         {
-            var currentCommandText = GameObject.FindWithTag("CurrentCommandText").GetComponent<Text>(); ;
-            currentCommandText.text = "Current Command: 2xWork,...";
-            var playerGenZoneController = GameObject.FindWithTag("PlayerGenZone").GetComponent<PlayerGenZoneController>();
-            buildPerTick = new BuildPerTick()
+            BuildPerTick = new BuildPerTick()
             {
-                AttackerPerTick = 0,
-                WorkersPerTick = 2,
-                SpecialistPerTick = 0,
-                ResearchPerTick = 0
+                Attackers = 0,
+                Workers = 2,
+                Snipers = 0,
+                TaskMasters = 0
             };
+            currentCommandText.text = BuildPerTick.CurrentCommand();
+
         }
 
         if ((xDiff < -1 && xDiff > -2) &&
             (yDiff < -1 && yDiff > -2))
         {
-            var currentCommandText = GameObject.FindWithTag("CurrentCommandText").GetComponent<Text>(); ;
-            currentCommandText.text = "Current Command: 4xWork";
-            var playerGenZoneController = GameObject.FindWithTag("PlayerGenZone").GetComponent<PlayerGenZoneController>();
-            buildPerTick = new BuildPerTick()
+            BuildPerTick = new BuildPerTick()
             {
-                AttackerPerTick = 0,
-                WorkersPerTick = 4,
-                SpecialistPerTick = 0,
-                ResearchPerTick = 0
+                Attackers = 0,
+                Workers = 4,
+                Snipers = 0,
+                TaskMasters = 0
             };
+            currentCommandText.text = BuildPerTick.CurrentCommand();
+
         }
     }
 

@@ -24,13 +24,14 @@ public class PlayerGenZoneController : MonoBehaviour
         {
             if (energyController.playerEnergy >= 25)
             {
+                energyController.SubtractEnergy();
                 var workerClone = Instantiate(blipShell,
                     new Vector2(transform.position.x,
                     transform.position.y), transform.rotation) as GameObject;
                 var blip = workerClone.GetComponent<Blip>();
                 blip.Init(true, false);
                 workerClone.GetComponent<SpriteRenderer>().material.color = blip.color;
-                workerClone.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * 3, speed * 1.5f);
+                workerClone.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * 1, speed * .5f);
             }
         }
 
@@ -38,13 +39,14 @@ public class PlayerGenZoneController : MonoBehaviour
         {
             if (energyController.playerEnergy >= 100)
             {
+                energyController.SubtractEnergy();
                 var workerClone = Instantiate(blipShell,
                     new Vector2(transform.position.x,
                     transform.position.y), transform.rotation) as GameObject;
                 var blip = workerClone.GetComponent<Blip>();
                 blip.Init(false, false);
                 workerClone.GetComponent<SpriteRenderer>().material.color = blip.color;
-                workerClone.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * 3, speed * 1.5f);
+                workerClone.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * 1, speed * .5f);
             }
         }
 
@@ -55,12 +57,13 @@ public class PlayerGenZoneController : MonoBehaviour
         var energyController = GameObject.FindWithTag("EnergyAmountText").GetComponent<EnergyController>();
         if (energyController.playerEnergy >= 25)
         {
+            energyController.SubtractEnergy();
             var workerClone = Instantiate(blipShell,
             new Vector2(transform.position.x, transform.position.y), transform.rotation) as GameObject;
             var blip = workerClone.GetComponent<Blip>();
             blip.Init(true, false);
             workerClone.GetComponent<SpriteRenderer>().material.color = blip.color;
-            workerClone.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * 3, speed * 1.5f);
+            workerClone.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * 1, speed * .5f);
         }
     }
 
@@ -69,12 +72,13 @@ public class PlayerGenZoneController : MonoBehaviour
         var energyController = GameObject.FindWithTag("EnergyAmountText").GetComponent<EnergyController>();
         if (energyController.playerEnergy >= 100)
         {
+            energyController.SubtractEnergy();
             var workerClone = Instantiate(blipShell,
             new Vector2(transform.position.x, transform.position.y), transform.rotation) as GameObject;
             var blip = workerClone.GetComponent<Blip>();
             blip.Init(false, false);
             workerClone.GetComponent<SpriteRenderer>().material.color = blip.color;
-            workerClone.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * 3, speed * 1.5f);
+            workerClone.GetComponent<Rigidbody2D>().velocity = new Vector2(speed * 1, speed * .5f);
         }
     }
 }

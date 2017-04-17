@@ -27,15 +27,15 @@ public class Blip : MonoBehaviour
         this.hp = this.isWorker ? 1 : 2;
         this.speed = this.isWorker ? 1 : 1.1f;
 
-        var energyController = GameObject.FindWithTag("EnergyAmountText").GetComponent<EnergyController>();
-        if (ownerIsAi)
-        {
-            energyController.SubtractAiEnergy();
-        }
-        else
-        {
-            energyController.SubtractEnergy();
-        }
+        //var energyController = GameObject.FindWithTag("EnergyAmountText").GetComponent<EnergyController>();
+        //if (ownerIsAi)
+        //{
+        //    energyController.SubtractAiEnergy();
+        //}
+        //else
+        //{
+        //    energyController.SubtractEnergy();
+        //}
 
         //Debug.LogWarning("ownerIsAi=" + this.ownerIsAi + ", this.isWorker=" + this.isWorker + this.ToString());
         //return this;
