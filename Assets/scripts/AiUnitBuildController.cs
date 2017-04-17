@@ -45,6 +45,8 @@ public class AiUnitBuildController : MonoBehaviour {
             TaskMasters = 0
         };
         sprite = GetComponent<SpriteRenderer>();
+        var currentCommandText = GameObject.FindWithTag("AiCommandText").GetComponent<Text>(); ;
+        currentCommandText.text = BuildPerTick.AiCommand();
 
         StartCoroutine("DoChecks");
         StartCoroutine("IncrementTime");
@@ -187,99 +189,4 @@ public class AiUnitBuildController : MonoBehaviour {
         currentCommandText.text = BuildPerTick.AiCommand();
     }
 
-    //void OnMouseDown()
-    //{
-    //    var currentCommandText = GameObject.FindWithTag("CurrentCommandText").GetComponent<Text>(); ;
-    //    var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    //    xOfClick = pos.x;
-    //    yOfClick = pos.y;
-    //    xDiff = (xOfClick - xCenter);
-    //    yDiff = (yOfClick - yCenter);
-    //    Debug.Log("clicks x:" + xOfClick + ", y:" + yOfClick + " |centers x: " + xCenter + ", y: " + yCenter + "| diff x:" + xDiff + "| diff y:" + yDiff);
-
-
-    //    var spendingPin = GameObject.FindWithTag("SpendingPin");
-    //    spendingPin.transform.position = new Vector2(xOfClick, yOfClick);
-
-    //    // Build Attackers
-    //    if ((xDiff > 0 && xDiff < 1) &&
-    //        (yDiff > 0 && yDiff < 1))
-    //    {
-    //        BuildPerTick = new BuildPerTick()
-    //        {
-    //            Attackers = 2,
-    //            Workers = 1,
-    //            Snipers = 0,
-    //            TaskMasters = 0
-    //        };
-    //    }
-
-    //    if (((xDiff > 0 && xDiff < 1) &&
-    //        (yDiff > 1 && yDiff < 2)) ||
-    //        ((yDiff > 0 && yDiff < 1) &&
-    //        (xDiff > 1 && xDiff < 2)))
-    //    {
-    //        BuildPerTick = new BuildPerTick()
-    //        {
-    //            Attackers = 2,
-    //            Workers = 0,
-    //            Snipers = 0,
-    //            TaskMasters = 0
-    //        };
-    //    }
-
-    //    if ((xDiff > 1 && xDiff < 2) &&
-    //        (yDiff > 1 && yDiff < 2))
-    //    {
-    //        BuildPerTick = new BuildPerTick()
-    //        {
-    //            Attackers = 4,
-    //            Workers = 0,
-    //            Snipers = 0,
-    //            TaskMasters = 0
-    //        };
-    //    }
-
-    //    // Builder Workers
-    //    if ((xDiff < 0 && xDiff > -1) &&
-    //        (yDiff < 0 && yDiff > -1))
-    //    {
-    //        BuildPerTick = new BuildPerTick()
-    //        {
-    //            Attackers = 1,
-    //            Workers = 2,
-    //            Snipers = 0,
-    //            TaskMasters = 0
-    //        };
-    //    }
-
-    //    if (((xDiff < 0 && xDiff > -1) &&
-    //        (yDiff < -1 && yDiff > -2)) ||
-    //        ((yDiff < 0 && yDiff > -1) &&
-    //        (xDiff < -1 && xDiff > -2)))
-    //    {
-    //        BuildPerTick = new BuildPerTick()
-    //        {
-    //            Attackers = 0,
-    //            Workers = 2,
-    //            Snipers = 0,
-    //            TaskMasters = 0
-    //        };
-    //    }
-
-    //    if ((xDiff < -1 && xDiff > -2) &&
-    //        (yDiff < -1 && yDiff > -2))
-    //    {
-    //        BuildPerTick = new BuildPerTick()
-    //        {
-    //            Attackers = 0,
-    //            Workers = 4,
-    //            Snipers = 0,
-    //            TaskMasters = 0
-    //        };
-    //    }
-
-    //    currentCommandText.text = BuildPerTick.CurrentCommand();
-
-    //}
 }
