@@ -130,12 +130,24 @@ public class PlayerChoiceBoxController : MonoBehaviour
             BuildPerTick = new BuildPerTick()
             {
                 Attackers = 2,
+                Workers = 1,
+                Snipers = 0,
+                TaskMasters = 0
+            };
+        }
+
+        if (((xDiff > 0 && xDiff < 1) &&
+            (yDiff > 1 && yDiff < 2)) ||
+            ((yDiff > 0 && yDiff < 1) &&
+            (xDiff > 1 && xDiff < 2)))
+        {
+            BuildPerTick = new BuildPerTick()
+            {
+                Attackers = 2,
                 Workers = 0,
                 Snipers = 0,
                 TaskMasters = 0
             };
-            currentCommandText.text = BuildPerTick.CurrentCommand();
-
         }
 
         if ((xDiff > 1 && xDiff < 2) &&
@@ -148,7 +160,6 @@ public class PlayerChoiceBoxController : MonoBehaviour
                 Snipers = 0,
                 TaskMasters = 0
             };
-            currentCommandText.text = BuildPerTick.CurrentCommand();
         }
 
         // Builder Workers
@@ -157,13 +168,25 @@ public class PlayerChoiceBoxController : MonoBehaviour
         {
             BuildPerTick = new BuildPerTick()
             {
+                Attackers = 1,
+                Workers = 2,
+                Snipers = 0,
+                TaskMasters = 0
+            };
+        }
+
+        if (((xDiff < 0 && xDiff > -1) &&
+            (yDiff < -1 && yDiff > -2)) ||
+            ((yDiff < 0 && yDiff > -1) &&
+            (xDiff < -1 && xDiff > -2)))
+        {
+            BuildPerTick = new BuildPerTick()
+            {
                 Attackers = 0,
                 Workers = 2,
                 Snipers = 0,
                 TaskMasters = 0
             };
-            currentCommandText.text = BuildPerTick.CurrentCommand();
-
         }
 
         if ((xDiff < -1 && xDiff > -2) &&
@@ -176,9 +199,10 @@ public class PlayerChoiceBoxController : MonoBehaviour
                 Snipers = 0,
                 TaskMasters = 0
             };
-            currentCommandText.text = BuildPerTick.CurrentCommand();
-
         }
+
+        currentCommandText.text = BuildPerTick.CurrentCommand();
+
     }
 
 }
