@@ -7,10 +7,10 @@ using UnityEngine.UI;
 public class AiUnitBuildController : MonoBehaviour {
 
     private BuildPerTick buildPerTick;
-
     float secondsElapsed = 0;
+    bool doneWithInitalZeroCheck = false;
     SpriteRenderer sprite;
-    List<float> randomTimedAttacks;
+    List<int> randomTimedAttacks;
 
     internal BuildPerTick BuildPerTick
     {
@@ -27,13 +27,15 @@ public class AiUnitBuildController : MonoBehaviour {
 
     void Start()
     {
-        randomTimedAttacks = new List<float>
+        randomTimedAttacks = new List<int>
         {
             Random.Range(0, 3),
-            Random.Range(4, 10),
-            Random.Range(11, 20),
-            Random.Range(21, 30),
-            Random.Range(31, 60)
+            Random.Range(7, 10),
+            Random.Range(15, 20),
+            Random.Range(25, 30),
+            Random.Range(35, 60),
+            Random.Range(65, 90),
+            Random.Range(95, 180),
         };
         BuildPerTick = new BuildPerTick()
         {
@@ -69,36 +71,76 @@ public class AiUnitBuildController : MonoBehaviour {
     {
         while (true)
         {
-            Debug.Log("randomTimedAttacks[0]:" + randomTimedAttacks[0]);
-            if (secondsElapsed < randomTimedAttacks[0])
+            Debug.Log("randomTimedAttacks:" + randomTimedAttacks);
+            if (!doneWithInitalZeroCheck && randomTimedAttacks[0] != 0)
             {
-                BuildPerTick = new BuildPerTick()
-                {
-                    Attackers = 0,
-                    Workers = 4,
-                    Snipers = 0,
-                    TaskMasters = 0
-                };
-                sprite.color = Color.magenta;
-                sprite.flipX = true;
+                SetToAttackMode(false);
+                doneWithInitalZeroCheck = true;
             }
 
-            if (secondsElapsed >= randomTimedAttacks[0])
+            if (secondsElapsed == randomTimedAttacks[0])
             {
-                BuildPerTick = new BuildPerTick()
-                {
-                    Attackers = 2,
-                    Workers = 1,
-                    Snipers = 0,
-                    TaskMasters = 0
-                };
-                sprite.color = Color.red;
-                sprite.flipX = false;
+                SetToAttackMode(true);
+            }
+            if (secondsElapsed == randomTimedAttacks[1])
+            {
+                SetToAttackMode(false);
+            }
+            if (secondsElapsed == randomTimedAttacks[2])
+            {
+                SetToAttackMode(true);
+            }
+            if (secondsElapsed == randomTimedAttacks[3])
+            {
+                SetToAttackMode(false);
+            }
+            if (secondsElapsed == randomTimedAttacks[4])
+            {
+                SetToAttackMode(true);
+            }
+            if (secondsElapsed == randomTimedAttacks[5])
+            {
+                SetToAttackMode(false);
+            }
+            if (secondsElapsed == randomTimedAttacks[6])
+            {
+                SetToAttackMode(true);
             }
 
             StartCoroutine("AddUnits", BuildPerTick);
             yield return new WaitForSeconds(.25f);
         }
+    }
+
+    void SetToAttackMode(bool isInAttackMode)
+    {
+        if (isInAttackMode)
+        {
+            BuildPerTick = new BuildPerTick()
+            {
+                Attackers = 2,
+                Workers = 0,
+                Snipers = 0,
+                TaskMasters = 0
+            };
+            sprite.color = Color.red;
+            sprite.flipX = false;
+        }
+        else
+        // full focus on workers
+        {
+            BuildPerTick = new BuildPerTick()
+            {
+                Attackers = 0,
+                Workers = 4,
+                Snipers = 0,
+                TaskMasters = 0
+            };
+            sprite.color = Color.magenta;
+            sprite.flipX = true;
+        }
+
+
     }
 
     IEnumerator AddUnits(BuildPerTick buildPerTick)
@@ -142,7 +184,7 @@ public class AiUnitBuildController : MonoBehaviour {
             }
         }
         var currentCommandText = GameObject.FindWithTag("AiCommandText").GetComponent<Text>(); ;
-        currentCommandText.text = BuildPerTick.CurrentCommand();
+        currentCommandText.text = BuildPerTick.AiCommand();
     }
 
     //void OnMouseDown()
