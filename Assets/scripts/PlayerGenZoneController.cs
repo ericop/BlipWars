@@ -7,6 +7,7 @@ public class PlayerGenZoneController : MonoBehaviour
 {
     public GameObject blipShell;
     public float speed;
+    public bool IsTwoPlayerMode;
 
     void Start()
     {
@@ -16,9 +17,12 @@ public class PlayerGenZoneController : MonoBehaviour
     void Update()
     {
         var energyController = GameObject.FindWithTag("EnergyAmountText").GetComponent<EnergyController>();
-        var attackerButton = GameObject.FindWithTag("AddAttackerButton").GetComponent<Button>();
 
-        attackerButton.interactable = energyController.playerEnergy >= 100;
+        if (IsTwoPlayerMode)
+        {
+            var attackerButton = GameObject.FindWithTag("AddAttackerButton").GetComponent<Button>();
+            attackerButton.interactable = energyController.playerEnergy >= 100;
+        }
 
         if (Input.GetKey(KeyCode.A))
         {

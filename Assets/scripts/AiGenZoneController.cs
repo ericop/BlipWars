@@ -8,6 +8,7 @@ public class AiGenZoneController : MonoBehaviour
 
     public GameObject blipShell;
     public float speed;
+    public bool IsTwoPlayerMode;
 
     // Use this for initialization
     void Start()
@@ -18,11 +19,13 @@ public class AiGenZoneController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         var energyController = GameObject.FindWithTag("EnergyAmountText").GetComponent<EnergyController>();
-        var attackerButton = GameObject.FindWithTag("AiAddAttackerButton").GetComponent<Button>();
 
-        attackerButton.interactable = energyController.aiEnergy >= 100;
+        if (IsTwoPlayerMode)
+        {
+            var attackerButton = GameObject.FindWithTag("AiAddAttackerButton").GetComponent<Button>();
+            attackerButton.interactable = energyController.aiEnergy >= 100;
+        }
 
         if (Input.GetKey(KeyCode.UpArrow))
         {

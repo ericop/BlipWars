@@ -24,6 +24,18 @@ namespace Assets.scripts
             return sb.ToString();
         }
 
+        public string AiCommand()
+        {
+            var props = this.GetType().GetProperties();
+            var sb = new StringBuilder();
+            sb.AppendLine("AI Command:");
+            foreach (var p in props)
+            {
+                sb.AppendLine(p.GetValue(this, null) + "x " + p.Name);
+            }
+            return sb.ToString();
+        }
+
 
         public string PropertyList()
         {
