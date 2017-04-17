@@ -47,7 +47,7 @@ public class PlayerChoiceBoxController : MonoBehaviour
 
         xCenter = transform.localPosition.x;
         yCenter = transform.localPosition.y;
-        Debug.Log("centers x:" + xCenter + ", y:" + yCenter);
+        Debug.Log("centers x:" + xCenter + ", y:" + yCenter.ToString());
 
         StartCoroutine("DoChecks");
     }
@@ -69,7 +69,6 @@ public class PlayerChoiceBoxController : MonoBehaviour
     IEnumerator AddUnits(BuildPerTick buildPerTick)
     {
         var playerGenZoneController = GameObject.FindWithTag("PlayerGenZone").GetComponent<PlayerGenZoneController>();
-        var energyController = GameObject.FindWithTag("EnergyAmountText").GetComponent<EnergyController>();
 
         if (buildPerTick.Snipers > 0)
         {
