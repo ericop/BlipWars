@@ -87,6 +87,7 @@
     <Compile Include="Assets\scripts\Blip.cs" />
     <Compile Include="Assets\scripts\BuildPerTick.cs" />
     <Compile Include="Assets\scripts\EnergyController.cs" />
+    <Compile Include="Assets\scripts\HowToPlayController.cs" />
     <Compile Include="Assets\scripts\MenuAction.cs" />
     <Compile Include="Assets\scripts\MuteButtonController.cs" />
     <Compile Include="Assets\scripts\PlayerChoiceBoxController.cs" />
