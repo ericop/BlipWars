@@ -47,8 +47,8 @@ This is a 2 player local, or 1 player verse AI game where each player controls a
 
 
 ## To Do
+- [x] Add 1 player mode vs AI
+- [x] Add *Pin Selector* to replace buttons for building new units
 - [ ] Add project landing page with [cool theme](http://themes.gohugo.io/github-project-landing-page/)
-- [ ] Add 1 player mode vs AI
-- [ ] Add *Pin Selector* to replace buttons for building new units
 - [ ] Add first two specialists, Researcher and Sniper
 - [ ] Add other specialists as time allows
