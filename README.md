@@ -3,6 +3,8 @@ Unity 2D RTS game that's simple yet interesting!
 
 ![image](https://cloud.githubusercontent.com/assets/5218249/24610557/0051d80a-184d-11e7-813b-b8b596375e9c.png)
 
+The Simple theme in space is a nod to [Rymdkapsel](https://en.wikipedia.org/wiki/Rymdkapsel).
+
 ## How to Install This Amazing, Free Game
 
 ### On Android
